@@ -1,0 +1,12 @@
+.row{
+    display: flex;
+    flex-direction: row;
+}
+input, textarea{
+    display: block;
+    margin: 5vmin;
+    width: 50%;
+}
+textarea{
+    height: 20%;
+}
