@@ -1,6 +1,7 @@
 .row{
-    display: flex;
-    flex-direction: row;
+    width: 80vw;
+    margin: 0 auto;
+    padding: 0 5px;
 }
 input, textarea{
     display: block;
@@ -9,4 +10,31 @@ input, textarea{
 }
 textarea{
     height: 20%;
+}
+.row input{
+    display: inline !important;
+    width: 2vmin;
+    height: 2vmin;
+    margin: 0;
+    padding: 0;
+    line-height: 20vmin;
+}
+.row *{
+    display: inline-block;
+    padding: 2vmin;
+    margin: 0;
+}
+.description{
+    width: 50vmin;
+}
+.title{
+    width: 10vmin;
+}
+.image{
+    width: 7%;
+    height: 7%;
+    background-size: cover;
+    margin-top: 5%;
+    padding: 0;
+    background-position: center;
 }
