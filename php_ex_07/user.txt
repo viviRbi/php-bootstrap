@@ -1,0 +1,5 @@
+John|9fd9f63e0d6487537569075da85a0c7f|John Doe
+Mary|576a9ff61cf6aeed050038a0f7769094|Mary Sue
+Admin|e3afed0047b08059d0fada10f400c1e5|Admin
+
+#pass: JohnDoe, MarySue, Admin
