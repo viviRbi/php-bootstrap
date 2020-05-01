@@ -7,8 +7,6 @@
 </head>
 <body>
 <?php 
-  
-
     session_start();
     $fullname = "";
 
@@ -21,6 +19,7 @@
         $deadline=20;
     }
 
+    // unset session when time out
     if(!empty($_SESSION) && $_SESSION['login'] == true){
         if($_SESSION['timeout']+$deadline >time()){
             $fullname = $_SESSION['fullname'];
@@ -30,13 +29,14 @@
         header('location: index.php');
     }
 
-    if(isset($_POST)){
+    // log out button
+    if(isset($_POST['logout'])){
         session_unset();
         header('location: index.php');
     }
 ?>
     <form action="index.php" method="post" name="logout">
-        <h3>Time remain login: <?php $deadline ?></h3>
+        <h3>Time remain login: <?php echo $deadline ?></h3>
         <input type="hidden" name="logout" value="dfdsfdsf" readonly/>
         <input type="submit" value="Log Out"/>
     </form>

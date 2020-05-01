@@ -16,22 +16,28 @@
     session_start();
 
     if(!empty($_SESSION['login'])){
-        header('location: process.php');
+        if($_SESSION['fullname'] == 'Admin'){
+            header('location: admin_process.php');
+        }else{
+            header('location: process.php');
+        }
     }else{
         if(isset($_POST['usename']) && isset($_POST['password'])){
             $usename= $_POST['usename'];
             $password= md5($_POST['password']);
             $data= file('user.txt');
-            
+            echo $usename;
+            echo $password;
             foreach($data as $value){
                 $eachDataArr= explode('|',$value);
+                print_r($eachDataArr);
                 if($usename == $eachDataArr[0] && $password == $eachDataArr[1]){
                     $_SESSION['fullname'] = $eachDataArr[2];
                     $_SESSION['login'] = true;
                     $_SESSION['timeout'] = time();
-                    if(strtolower($usename) != "admin"){
+                    if(strtolower($usename) != "admin") {
                         header('location: process.php');
-                    } elseif(strtolower($usename) == "admin") {
+                    } elseif (strtolower($usename) == "admin"){
                         header('location: admin_process.php');
                     }
                 } 
