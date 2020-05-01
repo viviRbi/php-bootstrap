@@ -29,9 +29,9 @@
                     $_SESSION['fullname'] = $eachDataArr[2];
                     $_SESSION['login'] = true;
                     $_SESSION['timeout'] = time();
-                    if($usename != "admin"){
+                    if(strtolower($usename) != "admin"){
                         header('location: process.php');
-                    } else{
+                    } elseif(strtolower($usename) == "admin") {
                         header('location: admin_process.php');
                     }
                 } 
