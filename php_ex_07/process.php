@@ -30,14 +30,14 @@
     }
 
     // log out button
-    if(isset($_POST['logout'])){
+    if(isset($_POST["out"])){
         session_unset();
         header('location: index.php');
     }
 ?>
     <form action="index.php" method="post" name="logout">
         <h3>Time remain login: <?php echo $deadline ?></h3>
-        <input type="hidden" name="logout" value="dfdsfdsf" readonly/>
+        <input type="hidden" name="out" value="out" readonly/>
         <input type="submit" value="Log Out"/>
     </form>
 

@@ -10,10 +10,11 @@
 
 <body>
 <?php
+    
+    session_start();
     $usename= "";
     $password= "";
-
-    session_start();
+    $user = file_get_contents('user.json');
 
     if(!empty($_SESSION['login'])){
         if($_SESSION['fullname'] == 'Admin'){
@@ -25,29 +26,31 @@
         if(isset($_POST['usename']) && isset($_POST['password'])){
             $usename= $_POST['usename'];
             $password= md5($_POST['password']);
-            $data= file('user.txt');
-            echo $usename;
-            echo $password;
+            $data= json_decode($user, true);
             foreach($data as $value){
-                $eachDataArr= explode('|',$value);
-                print_r($eachDataArr);
-                if($usename == $eachDataArr[0] && $password == $eachDataArr[1]){
-                    $_SESSION['fullname'] = $eachDataArr[2];
+                $id = $value['id'];
+                $pass = $value['pass'];
+                if($usename == $id && $password == $pass){
+                    $_SESSION['fullname'] = $value['fullName'];
                     $_SESSION['login'] = true;
                     $_SESSION['timeout'] = time();
-                    if(strtolower($usename) != "admin") {
+                    echo $value["role"];
+                    if(strtolower($value["role"]) == "user") {
                         header('location: process.php');
-                    } elseif (strtolower($usename) == "admin"){
+                    } elseif (strtolower($value["role"]) == "admin"){
                         header('location: admin_process.php');
                     }
                 } 
             }
+            echo "Wrong user name or password";
+            $usename= "";
+            $password= "";
         } 
     }
 ?>
     <form action="#" method="post" name="login-form">
-        <input type = "text" name="usename" value=<?php echo $usename;?>/> <br/>
-        <input type = "password" name="password" value=<?php echo $password;?>/> <br/>
+        <input type = "text" name="usename"placeholder="Usename" value=<?php echo $usename;?> > <br/>
+        <input type = "password" name="password" placeholder="Password" value=<?php echo $password;?> > <br/>
         <input type = "submit" value="submit"/> <br/>
     </form>
 </body>

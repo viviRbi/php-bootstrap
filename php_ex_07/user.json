@@ -1,0 +1,20 @@
+[
+    {
+        "id": "John",
+        "pass": "9fd9f63e0d6487537569075da85a0c7f",
+        "fullName": "John Doe",
+        "role": "user"
+    },
+    {
+        "id": "Mary",
+        "pass": "576a9ff61cf6aeed050038a0f7769094",
+        "fullName": "Mary Sue",
+        "role": "user"
+    },
+    {
+        "id": "Admin",
+        "pass": "e3afed0047b08059d0fada10f400c1e5",
+        "fullName": "Admin",
+        "role": "admin"
+    }
+]
