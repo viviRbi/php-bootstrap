@@ -6,3 +6,5 @@ RewriteEngine On
 RewriteRule "(.*)\.txt" "index\.php"
 RewriteRule "(.*)\.xml" "index\.php"
 RewriteRule "(.*)\.json" "index\.php"
+
+DirectoryIndex = "index.php"
