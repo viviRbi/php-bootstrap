@@ -49,11 +49,11 @@ class Validate {
     }
 
     private function validateString($element, $min=0, $max=0){
-       $length = $this->source[$element];
+       $length = strlen($this->source[$element]);
        if($length < $min){
            $this->errors[$element] = ucwords($element)." is too short";
        } elseif($length>$max){
-           $this->errors[$element] = ucwords($element). "is too long";
+           $this->errors[$element] = ucwords($element). " is too long";
        }elseif(is_string($this->source[$element])){
            $this->errors[$element]= ucwords($element). " is an invalid string";
        }
