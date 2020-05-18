@@ -1,6 +1,6 @@
 <?php
-class Validate {
 
+class Validate {
     private $errors = array();
     private $source = array();
     private $rules = array();
@@ -50,12 +50,13 @@ class Validate {
 
     private function validateString($element, $min=0, $max=0){
        $length = strlen($this->source[$element]);
-       if($length < $min){
-           $this->errors[$element] = ucwords($element)." is too short";
-       } elseif($length>$max){
-           $this->errors[$element] = ucwords($element). " is too long";
-       }elseif(is_string($this->source[$element])){
+       if(!$length> $min || !$length < $max){
+        $this->errors[$element] = ucwords($element) ." needs to be between $min to $max characters";
+       }elseif(!is_string($this->source[$element])){
            $this->errors[$element]= ucwords($element). " is an invalid string";
+       } else{
+            $_SESSION['user'][$element]  = $this->source[$element];
+            $this->errors[$element] = "";
        }
     }
 
@@ -71,24 +72,36 @@ class Validate {
             $this->errors[$element] = "Password needs to have at least 1 lower case, 1 upper case, 1 number and 1 special character";
         } elseif(!strlen($pass)> $min || !strlen($pass)< $max){
             $this->errors[$element] = "Password needs to be between $min to $max characters";
+        } else{
+            $_SESSION['user'][$element]  = $pass;
+            $this->errors[$element] = "";
         }
     }
 
     private function validateConfirmPassword($element){
         if($this->source[$element] != $this->source['pass']){
             $this->errors[$element] = "Confirm password must be the same as password";
+        } else{
+            $_SESSION['user'][$element] = $this->source[$element];
+            $this->errors[$element] = "";
         }
     }
 
     private function validateEmail($element){
         if(!filter_var($this->source[$element], FILTER_VALIDATE_EMAIL)){
             $this->errors[$element] = ucwords($element)." is invalid";
+        } else{
+            $_SESSION['user'][$element]  = $this->source[$element];
+            $this->errors[$element] = "";
         }
     }
 
     private function validateURL($element){
         if(!filter_var($this->source[$element], FILTER_VALIDATE_URL)){
             $this->errors[$element] = ucwords($element)." is invalid";
+        } else {
+            $_SESSION['user'][$element]  = $this->source[$element];
+            $this->errors[$element] = "";
         }
     }
 
@@ -96,7 +109,9 @@ class Validate {
         require_once 'securimage/securimage.php';
 	    $securimage = new Securimage();
         if($securimage->check($this->source[$element])== false){
-            $this->errors[$element] = ucwords($element)." is wrong";
+            $_SESSION['user'][$element] = ucwords($element)." is wrong";
+        } else {
+            $this->errors[$element] = "";
         }
     }
 }
