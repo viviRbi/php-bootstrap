@@ -27,10 +27,10 @@ class Validate {
         foreach($this->rules as $element=>$value){
             switch ($value['type']){
                 case 'string':
-                    $this->validateString($element);
+                    $this->validateString($element,$value['min'],$value['max']);
                     break;
                 case 'password':
-                    $this->validatePassword($element);
+                    $this->validatePassword($element,$value['min'],$value['max']);
                     break;
                 case 'confirm_pass':
                     $this->validateConfirmPassword($element);
@@ -50,7 +50,7 @@ class Validate {
 
     private function validateString($element, $min=0, $max=0){
        $length = strlen($this->source[$element]);
-       if(!$length> $min || !$length < $max){
+       if($length< $min || $length > $max){
         $this->errors[$element] = ucwords($element) ." needs to be between $min to $max characters";
        }elseif(!is_string($this->source[$element])){
            $this->errors[$element]= ucwords($element). " is an invalid string";
