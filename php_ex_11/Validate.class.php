@@ -109,7 +109,7 @@ class Validate {
         require_once 'securimage/securimage.php';
 	    $securimage = new Securimage();
         if($securimage->check($this->source[$element])== false){
-            $_SESSION['user'][$element] = ucwords($element)." is wrong";
+            $this->errors[$element] = ucwords($element)." is wrong";
         } else {
             $this->errors[$element] = "";
         }

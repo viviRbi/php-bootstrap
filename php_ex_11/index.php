@@ -96,7 +96,7 @@
 
         <label>Captcha</label> <br/>
         <img src="securimage/securimage_show.php" id="captcha"/>
-        <input type="text" name="captcha" value=<?php echo $source['captcha']; ?>>
+        <input type="text" name="captcha" value="">
         <a href="#" onclick="document.getElementById('captcha').src = 'securimage/securimage_show.php?' + Math.random(); return false">[ Different Image ]</a>
         <?php echo $submit && $error_style == 1? $errorArr['captcha']:  "" ?> 
 
