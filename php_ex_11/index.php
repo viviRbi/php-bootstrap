@@ -44,7 +44,7 @@
                  ->run();
         if($error_style == 0){
             foreach($validate->getError() as $value){
-                echo "<p style='color:red;>$value</p>";
+                echo "<p style=color:red;>$value</p>";
             }
         } elseif ($error_style == 1) {
             foreach($validate->getError() as $key=>$value){
