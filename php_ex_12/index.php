@@ -1,5 +1,7 @@
 <?php 
     require_once "connect.php";
+    require_once "status_helper.php";
+    require_once "usersList_helper.php";
 ?>
 
 <!DOCTYPE html>
@@ -17,10 +19,10 @@
     <section>
         <p><strong>Search and Filter</strong></p>
 
-        <article>
-            <button>All</button>
-            <button>Active</button>
-            <button>Inactive</button>
+        <article id="statusFilter">
+            <a href="http://localhost/php_exe/php_ex_12/index.php">All</a>
+            <a href="http://localhost/php_exe/php_ex_12/index.php/?status=active">Active</a>
+            <a href="http://localhost/php_exe/php_ex_12/index.php/?status=inactive">Inactive</a>
         </article>
 
         <br/>
@@ -61,36 +63,49 @@
         <table>
             <tr>
                 <th><input type='checkbox' name='checkAll' onclick="checkAll(this)"></th>
-                <th><button><strong>ID</strong></button></th>
-                <th><button><strong>Name</strong></button></th>
-                <th><button><strong>Status</strong></button></th>
-                <th><button><strong>Ordering</strong></button></th>
+                <?php 
+                // echo "<pre>"; 
+                // print_r($_SERVER);
+                // echo "</pre>";
+                function urlQuery($query){
+                    if (isset($_SERVER['QUERY_STRING'])){
+                        if ($_SERVER['QUERY_STRING'] == "$query-list=asc"){
+                            echo "href='http://localhost/php_exe/php_ex_12/index.php/?$query-list=desc'";
+                        } elseif($_SERVER['QUERY_STRING'] == "$query-list=desc") {
+                            echo "href='http://localhost/php_exe/php_ex_12/index.php/?$query-list=asc'";
+                        } elseif(strpos($_SERVER['QUERY_STRING'], "$query-list") == false) {
+                            echo "href='http://localhost/php_exe/php_ex_12/index.php/?$query-list=asc'";
+                        }
+                    }
+                }
+               
+                ?> 
+                <th><button ><strong><a <?php urlQuery("id"); ?>>ID</a></strong></button></th>
+                <th><button ><strong><a <?php urlQuery("name"); ?>>Member Name</strong></button></th>
+                <th><button ><strong><a <?php urlQuery("status"); ?>>Member Status</a></strong></button></th>
+                <th><button ><strong><a <?php urlQuery("order"); ?>>Ordering</a></strong></button></th>
                 <th>Action</th>
             </tr>
 
-            <tr>
-                <th><input type='checkbox'name='check[]' value=1></th>
-                <td>1</td>
-                <td>sdsd</td>
-                <td>sdsdsd</td>
-                <td>44</td>
-                <td>
-                    <button href='edit.php'>Edit</button>
-                    <button>Delete</button>
-                </td>
-            </tr>
+            <!-- in userList_helper.php -->
+            <?php 
 
-            <tr>
-                <th><input type='checkbox'name='check[]' value=2></th>
-                <td>1</td>
-                <td>sdsd</td>
-                <td>sdsdsd</td>
-                <td>44</td>
-                <td>
-                    <button href='edit.php'>Edit</button>
-                    <button>Delete</button>
-                </td>
-            </tr>
+            // status
+            $type = "list";
+            if (isset($_GET['status'])){
+                $type= $_GET['status']; 
+            }
+            
+            // getQuery
+            
+            orderList("id");
+            orderList("name");
+            orderList("order");
+            orderList("status");
+
+            echo usersList($type);
+            ?>
+
         </table>
     </section>
 
@@ -100,10 +115,11 @@
         <p>Number of element on the page: 2</p>
         <p>Showing page 1 of 3 pages</p>
         <div>
-            <strong>Total entries: 3 </strong>&nbsp;&nbsp;
+            <strong>Total entries: <?php echo $database->countResult();?> </strong>&nbsp;&nbsp;
             <strong>Total page: 1</strong>
         </div>
         
     </section>
+    <script src="script2.js"></script>
 </body>
 </html>

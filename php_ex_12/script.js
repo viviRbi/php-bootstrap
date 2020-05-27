@@ -9,3 +9,6 @@ function checkAll(self){
         self.value = allValues;
     }
 }
+
+
+

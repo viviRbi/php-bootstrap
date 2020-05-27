@@ -66,7 +66,7 @@
         }
 
         // CREATE INSERT ARRAY
-        public function createInsertArray($data){
+        private function createInsertArray($data){
             $newQuery = array();
             $fields = '';
             $values = '';
@@ -107,8 +107,8 @@
             return $newQuery;
         }
 
-        // WhereData
-        public function createWhereUpdate($id){
+        // Update/WhereData
+        private function createWhereUpdate($id){
             $newQuery = '';
             if(!empty($id)){
                 $newQuery = "`id` = $id";
@@ -125,12 +125,11 @@
         public function delete($id){
             $query=$this->createWhereDelete($id);
             $this->query($query);
-            // echo $this->affected_row();
             return $this->affected_row();
         }
 
         // Delete id
-        public function createWhereDelete($id){
+        private function createWhereDelete($id){
             if(!empty($id)){
                 $newWhere = '';
                 $query = '';
@@ -145,6 +144,27 @@
                     }
             }
             return $query;
+        }
+
+        // SHOW ROWS DATA
+        public function listRecord($query = null){
+            $result = array();
+            $resultQuery = ($query == null)? $this->query : $this->query($query);
+            if(mysqli_num_rows($resultQuery) > 0){
+                while($row = mysqli_fetch_assoc($resultQuery)){
+                    $result[] = $row;
+                }
+                mysqli_free_result($resultQuery);
+            }
+            return $result;
+        }
+
+        // Count result
+        public function countResult(){
+            $query = "SELECT COUNT(id) AS total FROM `users`";
+            $result = $this->query($query);
+            $total = mysqli_fetch_assoc($result);
+            return $total['total'];
         }
     }
 ?>
