@@ -1,17 +1,14 @@
-<?php 
-    require_once "connect.php";
-    require_once "status_helper.php";
-    require_once "usersList_helper.php";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="script.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
+
 </head>
+
 <body>
     <h2>Item Management</h2>
 
@@ -38,48 +35,33 @@
 
     <!--List item -->
     <section>
-        <p><strong>List Item</strong></p>
-        <article>
-            <select>
-                <option>Choose action</option>
-                <option>Active</option>
-                <option>Inactive</option>
-                <option>Ordering</option>
+        <p style="display:inline-block;"><strong>List Item</strong></p><input  type='checkbox' name='checkAll' onchange="checkAll(this)">
+
+        <form name="bullActionForm" action="http://localhost/php_exe/php_ex_12/multi_action.php" method='post'>
+            <select name="bullaction" onchange="actionOption(this)">
+                <option value = "null">Choose action</option>
+                <option value = "active">Active</option>
+                <option value = "inactive">Inactive</option>
+                <option value = "multi-delete">Multi-Delete</option>
             </select>
-            <button>Apply</button>
-        </article>
-
-        <br/>
-
-        <article>
-            <input name="search" value = "">
-            <button>Clear</button>
-            <button>Search</button>
-        </article>
-
-        <br/><br/>
+            <input type="submit" id="actionSubmit" value="Apply" disabled="disabled"/>
+        <!-- </form> -->
+        <!-- <button id="actionSubmit" onclick="multiSubmit(this)" disabled="disabled">Apply</button><br/> -->
 
     <!-- User info -->
+    <?php 
+        require_once "connect.php";
+        require_once "status_helper.php";
+        require_once "usersList_helper.php";
+    ?>
+
+    </br></br></br>
         <table>
             <tr>
-                <th><input type='checkbox' name='checkAll' onclick="checkAll(this)"></th>
-                <?php 
-                // echo "<pre>"; 
-                // print_r($_SERVER);
-                // echo "</pre>";
-                function urlQuery($query){
-                    if (isset($_SERVER['QUERY_STRING'])){
-                        if ($_SERVER['QUERY_STRING'] == "$query-list=asc"){
-                            echo "href='http://localhost/php_exe/php_ex_12/index.php/?$query-list=desc'";
-                        } elseif($_SERVER['QUERY_STRING'] == "$query-list=desc") {
-                            echo "href='http://localhost/php_exe/php_ex_12/index.php/?$query-list=asc'";
-                        } elseif(strpos($_SERVER['QUERY_STRING'], "$query-list") == false) {
-                            echo "href='http://localhost/php_exe/php_ex_12/index.php/?$query-list=asc'";
-                        }
-                    }
-                }
-               
-                ?> 
+            <!-- <th><input type='radio' name='checkAll' onchange="checkAll(this)"></th> -->
+
+            <!-- cannot create function with check & radio input "checkAll is not a function" -->
+                <th><p></p></th>
                 <th><button ><strong><a <?php urlQuery("id"); ?>>ID</a></strong></button></th>
                 <th><button ><strong><a <?php urlQuery("name"); ?>>Member Name</strong></button></th>
                 <th><button ><strong><a <?php urlQuery("status"); ?>>Member Status</a></strong></button></th>
@@ -87,7 +69,8 @@
                 <th>Action</th>
             </tr>
 
-            <!-- in userList_helper.php -->
+            <!-- WHERE: userList_helper.php -->
+
             <?php 
 
             // status
@@ -95,16 +78,18 @@
             if (isset($_GET['status'])){
                 $type= $_GET['status']; 
             }
+            // use $type for searchbox
             
             // getQuery
-            
             orderList("id");
             orderList("name");
             orderList("order");
             orderList("status");
-
-            echo usersList($type);
+            
             ?>
+            <!-- <form id="form2" name='checkEachForm' action="http://localhost/php_exe/php_ex_12/multi_action.php" method='post'> -->
+                <?php echo usersList($type); ?>
+            </form>
 
         </table>
     </section>
@@ -120,6 +105,31 @@
         </div>
         
     </section>
-    <script src="script2.js"></script>
+
+    <script>
+    // if value of select action = 'null', disabled. If not, remove attr
+    // Call script2 not work. Can only paste the script here
+        const actionSubmitBtn = document.querySelector('#actionSubmit')
+
+        function actionOption(self){
+            if(self.value == "null"){
+                actionSubmitBtn.setAttribute('disabled',true)
+            } else {
+                if(actionSubmitBtn.getAttribute('disabled')){
+                    actionSubmitBtn.removeAttribute('disabled')
+                }
+            }
+        }
+        // check all checkboxes and take all values
+
+        function checkAll(self){
+            const checkboxes = document.getElementsByName('check[]');
+            for(let i=0; i< checkboxes.length; i++){
+                checkboxes[i].checked = self.checked;
+            }
+        }
+
+    </script>
+    
 </body>
 </html>

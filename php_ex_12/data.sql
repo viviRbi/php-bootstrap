@@ -37,5 +37,12 @@ INSERT INTO `users` (`id`,`name`, `status`, `ordering`) VALUES
 (20, 'Haku', 0, 343),
 (21, 'Fir', 1, 87),
 (22, 'Thany', 1, 63),
-(23, 'Co', 0,47),
-(24, 'Xuan', 1, 51);
+(23, 'Des', 0,47),
+(24, 'Takuno', 1, 237),
+(25, 'Viktor', 1, 33),
+(26, 'Theresa', 0, 7),
+(27, 'Barnabi', 1, 11),
+(28, 'Karla', 1, 99),
+(29, 'Taki', 0, 44),
+(30, 'Nat', 0, 243)
+
