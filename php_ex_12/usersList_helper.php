@@ -18,6 +18,10 @@ function urlQuery($query){
 // Get content from urlQuery function, if it = desc => $type =nameDesc | idDesc => userList('nameDesc')
 function orderList($query){
     global $type;
+    if(isset($_GET[$query]) == "search"){
+        $type = "search";
+        return $type;
+    }
     if(isset($_GET["$query-list"])){
         if ($_GET["$query-list"] == 'asc'){
             $type = $query. "Asc";
@@ -30,7 +34,6 @@ function orderList($query){
 
 // $$type = $nameDesc, an array created in connect.php
 function usersList($type){
-    $stat = '';
     $html = "";
     global $$type;
     foreach($$type as $key=>$value ){

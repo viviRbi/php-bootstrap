@@ -1,3 +1,9 @@
+<?php 
+    require_once "connect.php";
+    require_once "status_helper.php";
+    require_once "search_helper.php";
+    require_once "usersList_helper.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +16,7 @@
 </head>
 
 <body>
+    
     <h2>Item Management</h2>
 
     <!-- Search and filter -->
@@ -17,18 +24,18 @@
         <p><strong>Search and Filter</strong></p>
 
         <article id="statusFilter">
-            <a href="http://localhost/php_exe/php_ex_12/index.php">All</a>
-            <a href="http://localhost/php_exe/php_ex_12/index.php/?status=active">Active</a>
-            <a href="http://localhost/php_exe/php_ex_12/index.php/?status=inactive">Inactive</a>
+            <a href="http://localhost/php_exe/php_ex_12/index.php">All(<?php echo $database->countResult(); ?>)</a>&nbsp;&nbsp;
+            <?php statusFilterDisplay(); ?>
         </article>
 
         <br/>
 
-        <article>
+        <form action="#" method="get">
             <input name="search" value = "">
             <button>Clear</button>
-            <button>Search</button>
-        </article>
+            <input type="submit" value="search"></button>
+        </form>
+     
     </section>
 
     <br/><br/>
@@ -44,22 +51,14 @@
                 <option value = 1>Inactive</option>
                 <option value = "multi-delete">Multi-Delete</option>
             </select>
-            <input type="submit" id="actionSubmit" value="Apply" disabled="disabled"/>
+            <input type="submit" id="actionSubmit" value="Apply" disabled="disabled" onclick="haveNotCheck(this)"/>
         <!-- </form> -->
         <!-- <button id="actionSubmit" onclick="multiSubmit(this)" disabled="disabled">Apply</button><br/> -->
 
     <!-- User info -->
-    <?php 
-        require_once "connect.php";
-        require_once "status_helper.php";
-        require_once "usersList_helper.php";
-    ?>
-
     </br></br></br>
         <table>
             <tr>
-            <!-- <th><input type='radio' name='checkAll' onchange="checkAll(this)"></th> -->
-
             <!-- cannot create function with check & radio input "checkAll is not a function" -->
                 <th><p></p></th>
                 <th><button ><strong><a <?php urlQuery("id"); ?>>ID</a></strong></button></th>
@@ -85,6 +84,7 @@
             orderList("name");
             orderList("order");
             orderList("status");
+            orderList("search");
             
             ?>
             <!-- <form id="form2" name='checkEachForm' action="http://localhost/php_exe/php_ex_12/multi_action.php" method='post'> -->
@@ -119,6 +119,18 @@
                     actionSubmitBtn.removeAttribute('disabled')
                 }
             }
+        }
+
+        function haveNotCheck(self){
+            const checkboxes = document.getElementsByName('check[]');
+                for(let i=0; i< checkboxes.length; i++){
+                    if(checkboxes[i].checked){
+                        
+                    }else{
+                        alert('Please check the boxes')
+                        self.preventDefault()
+                    }
+                }
         }
         // check all checkboxes and take all values
 

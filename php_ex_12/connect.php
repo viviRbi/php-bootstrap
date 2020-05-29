@@ -1,5 +1,6 @@
 <?php 
     require_once "Database.class.php";
+    require_once "search_helper.php";
     $params = array (
         'server' 	=> 'localhost',
 		'username'	=> 'root',
@@ -35,7 +36,8 @@
     $orderAsc = $database->listRecord("SELECT * FROM `$params[table]` ORDER BY `ordering` ASC");
     $orderDesc = $database->listRecord("SELECT * FROM `$params[table]` ORDER BY `ordering` DESC");
     
-    
+    $search = $database->listRecord("SELECT * FROM `$params[table]` WHERE `name` LIKE '%$searchWord%'");
+
 
 
 

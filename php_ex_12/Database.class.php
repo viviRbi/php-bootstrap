@@ -160,8 +160,12 @@
         }
 
         // Count result
-        public function countResult(){
-            $query = "SELECT COUNT(id) AS total FROM `users`";
+        public function countResult($where = null){
+            if(!$where){
+                $query = "SELECT COUNT(id) AS total FROM `users`";
+            } else{
+                $query = "SELECT COUNT(id) AS total FROM `users` WHERE $where";
+            }
             $result = $this->query($query);
             $total = mysqli_fetch_assoc($result);
             return $total['total'];
