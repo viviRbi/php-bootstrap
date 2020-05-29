@@ -40,8 +40,8 @@
         <form name="bullActionForm" action="http://localhost/php_exe/php_ex_12/multi_action.php" method='post'>
             <select name="bullaction" onchange="actionOption(this)">
                 <option value = "null">Choose action</option>
-                <option value = "active">Active</option>
-                <option value = "inactive">Inactive</option>
+                <option value = 0>Active</option>
+                <option value = 1>Inactive</option>
                 <option value = "multi-delete">Multi-Delete</option>
             </select>
             <input type="submit" id="actionSubmit" value="Apply" disabled="disabled"/>
