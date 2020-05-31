@@ -1,7 +1,7 @@
 body{
-    background: pink;
-    color: green;
+    color: rgb(73, 73, 73);
 }
-li{
+ul li{
     display: inline-block;
+    padding: 0 5px;
 }
