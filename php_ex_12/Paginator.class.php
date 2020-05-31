@@ -23,6 +23,10 @@
             if(!strrpos($this->url ,''.$this->qus.'page=') === false){
                 $url= substr($this->url ,0,strpos($this->url ,''.$this->qus.'page='));
                 $this->url = $url;
+            }elseif(substr($this->url ,0,strpos($this->url , '?page='))){
+                $url= substr($this->url ,0,strpos($this->url ,'page='));
+                $this->url = $url;
+                $this->qus = '';
             }
             // count element
             if($this->totalUsers < $this->totalUsersPerPage){
@@ -54,20 +58,20 @@
             $prev='';
             $next='';
             $end='';
-
+            include('style.php');
             // If there's more than 1 page, show start, prev, next, end
             if($this->totalPage > 1){
-                $start = '<li>Start</li>';
-                $prev = '<li>Previous</li>';
+                $start = '<li style="display: inline-block;">Start</li>'.'&nbsp;';
+                $prev = '<li style="display: inline-block;">Previous</li>'.'&nbsp;';
                 if($this->currentPage > 1){
-                    $start = '<li><a href="'.$this->url.''.$this->qus.'page=1">Start</a></li>';
-                    $prev = '<li><a href="'.$this->url.''.$this->qus.'page='.($this->currentPage-1).'">Previous</a></li>';
+                    $start = '<li style="display: inline-block;"><a href="'.$this->url.''.$this->qus.'page=1">Start</a></li>'.'&nbsp;';
+                    $prev = '<li style="display: inline-block;"><a href="'.$this->url.''.$this->qus.'page='.($this->currentPage-1).'">Previous</a></li>'.'&nbsp;';
                 }
-                $next = '<li>Next</li>';
-                $end = '<li>End</li>';
+                $next = '<li style="display: inline-block;">Next</li>';
+                $end = '<li style="display: inline-block;">End</li>';
                 if($this->currentPage < $this->totalPage){
-                    $next 	= '<li><a href="'.$this->url.''.$this->qus.'page='.($this->currentPage+1).'">Next</a></li>';
-                    $end 	= '<li><a href="'.$this->url.''.$this->qus.'page='.$this->totalPage.'">End</a></li>';
+                    $next 	= '&nbsp;'.'<li style="display: inline-block;"><a href="'.$this->url.''.$this->qus.'page='.($this->currentPage+1).'">Next</a></li>'.'&nbsp;';
+                    $end 	= '&nbsp;'.'<li style="display: inline-block;"><a href="'.$this->url.''.$this->qus.'page='.$this->totalPage.'">End</a></li>';
                 }
             }
             $startPage = '';
@@ -97,9 +101,9 @@
             if($this->totalPage > 1){
                 for($i = $startPage; $i <= $endPage; $i++){
                     if($i == $this->currentPage){
-                        $listPages .= '<li style="color:green;">'.$i.'</a>';
+                        $listPages .= '&nbsp;'.'<li style="color:green;display: inline-block;">'.$i.'</a>'.'&nbsp;';
                     } else{
-                        $listPages .= '<li><a href="'.$this->url.''.$this->qus.'page='.$i.'">'.$i.'</a>';
+                        $listPages .= '&nbsp;'.'<li style="display: inline-block;"><a href="'.$this->url.''.$this->qus.'page='.$i.'">'.$i.'</a>'.'&nbsp;';
                     }
                 }
             }else{

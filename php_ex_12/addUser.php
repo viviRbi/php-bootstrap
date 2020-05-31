@@ -15,24 +15,45 @@
 
 <body>
 <?php 
-    
+    $name = '';
+    $status = '';
+    $ordering = '';
+
+    $insertInfo = array();
+
+    if(isset($_POST)){
+        foreach($_POST as $key=>$value){
+            $_SESSION['user'][$key] = $value;
+            $$key = $value;
+            $insertInfo["$key"]=$value;
+        }
+        
+        $database->insert($insertInfo);
+        header('Location: http://localhost/php_exe/php_ex_12/index.php');
+    }
+
+    if(isset($_SESSION['user'])){
+        foreach($_SESSION['user'] as $key=>$value){
+            $$key = $value;
+        }
+    }
+    echo $status;
 ?>
 
     <h2>Add Page</h2>
     <form action="#" method="post" name="add-form">
 
         <label>Name</label></br>
-        <!-- value bi mat chu sau khoang trang -->
-        <input type="text" name="name" value="" ?> </br></br>
+        <input type="text" name="name" value=<?php echo $name?>> </br></br>
 
         <label>Status</label></br>
         <select name="status">
-            <option value='0' >Active</option>
-            <option value='1' >Inactive</option>
+            <option value='0' <?php echo $status == 0? "selected='selected'": ""?>>Active</option>
+            <option value='1' <?php echo $status == 1? "selected='selected'": ""?>>Inactive</option>
         </select></br></br>
 
         <label>Ordering</label></br>
-        <input type="number" name="ordering" value = "" ></br></br>
+        <input type="number" name="ordering" value = <?php echo $ordering?>></br></br>
 
         <input type="submit" value = "Submit">
     </form>

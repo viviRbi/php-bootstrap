@@ -1,3 +1,14 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="style.css" rel="stylesheet" type="text/css">
+
+</head>
 <?php 
     require_once "connect.php";
     require_once "status_helper.php";
@@ -6,17 +17,6 @@
     require_once "Paginator.class.php";
     require_once "paginator_helper.php";
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
-
-</head>
-
 <body>
     
     <h2>Item Management</h2>
