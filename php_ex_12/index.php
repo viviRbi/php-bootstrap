@@ -3,6 +3,8 @@
     require_once "status_helper.php";
     require_once "search_helper.php";
     require_once "usersList_helper.php";
+    require_once "Paginator.class.php";
+    require_once "paginator_helper.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +45,7 @@
     <!--List item -->
     <section>
         <p style="display:inline-block;"><strong>List Item</strong></p><input  type='checkbox' name='checkAll' onchange="checkAll(this)">
-
+        &nbsp;&nbsp;<a href="http://localhost/php_exe/php_ex_12/addUser.php">Add User</a>
         <form name="bullActionForm" action="http://localhost/php_exe/php_ex_12/multi_action.php" method='post'>
             <select name="bullaction" onchange="actionOption(this)">
                 <option value = "null">Choose action</option>
@@ -52,8 +54,6 @@
                 <option value = "multi-delete">Multi-Delete</option>
             </select>
             <input type="submit" id="actionSubmit" value="Apply" disabled="disabled" onclick="haveNotCheck(this)"/>
-        <!-- </form> -->
-        <!-- <button id="actionSubmit" onclick="multiSubmit(this)" disabled="disabled">Apply</button><br/> -->
 
     <!-- User info -->
     </br></br></br>
@@ -74,18 +74,34 @@
 
             // status
             $type = "list";
+            $totalPage = '';
+
             if (isset($_GET['status'])){
                 $type= $_GET['status']; 
+
+                if(!strrpos($type,'?page=') == 0){
+                    $type= substr($type,0,strpos($type,'?page='));
+                }
+                if($type == 'active'){
+                    $totalUsers= $database->countResult("`status` = 0");
+                }else{ 
+                    $totalUsers= $database->countResult("`status` = 1");
+                }
+            } else{
+                $totalUsers = $database->countResult();
             }
-            // use $type for searchbox
             
-            // getQuery
+            // get other Query
+       
             orderList("id");
             orderList("name");
             orderList("order");
-            orderList("status");
-            orderList("search");
-            
+      
+            if (isset($_GET['search'])){
+                orderList("search");
+                $type = "search";
+                $totalUsers= $database->countResult("`name` LIKE '%$searchWord%'");
+            }
             ?>
             <!-- <form id="form2" name='checkEachForm' action="http://localhost/php_exe/php_ex_12/multi_action.php" method='post'> -->
                 <?php echo usersList($type); ?>
@@ -97,11 +113,17 @@
     <br/> <br/>
     <section>
         <p><strong>Pagination</strong></p>
-        <p>Number of element on the page: 2</p>
-        <p>Showing page 1 of 3 pages</p>
+        <?php 
+        // other values save in paginator_helper
+        $paginator  = new Paginator($totalUsers ,$totalUsersPerPage, $pageDisplay ,$currentPage);
+        echo $paginator->showPage(); 
+        ?>
+
+        <p>Number of element on the page: <?php echo $paginator->getter()['countElements'] ?></p>
+        <p>Showing page <?php echo $paginator->getter()['currentPage'] ?> of <?php echo $paginator->getter()['pageDisplay'] ?> pages</p>
         <div>
-            <strong>Total entries: <?php echo $database->countResult();?> </strong>&nbsp;&nbsp;
-            <strong>Total page: 1</strong>
+            <strong>Total entries: <?php echo $paginator->getter()['totalUsers'] ?> </strong>&nbsp;&nbsp;
+            <strong>Total page: <?php echo $paginator->getter()['totalPage'] ?></strong>
         </div>
         
     </section>
