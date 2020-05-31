@@ -32,6 +32,11 @@
         public function setConnect($connect){
             $this->connect = $connect;
         }
+
+        // Get connect
+        public function getConnect(){
+            return $this->connect;
+        }
 	
         // Set table
         public function setTable($table){

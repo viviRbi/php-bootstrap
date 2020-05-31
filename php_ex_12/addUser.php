@@ -20,16 +20,19 @@
     $ordering = '';
 
     $insertInfo = array();
+    $message ='';
 
-    if(isset($_POST)){
+    if(isset($_POST['name'])){
         foreach($_POST as $key=>$value){
             $_SESSION['user'][$key] = $value;
+            $value = mysqli_real_escape_string($database->getConnect(),$value);
             $$key = $value;
             $insertInfo["$key"]=$value;
+  
         }
         
         $database->insert($insertInfo);
-        header('Location: http://localhost/php_exe/php_ex_12/index.php');
+        // header('Location: http://localhost/php_exe/php_ex_12/index.php');
     }
 
     if(isset($_SESSION['user'])){
@@ -59,6 +62,7 @@
     </form>
   
     <a href="http://localhost/php_exe/php_ex_12/index.php">Back</a>
+    <?php echo $message ?>
 
 </body>
 

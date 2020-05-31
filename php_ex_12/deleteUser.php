@@ -14,10 +14,13 @@
 <?php 
     if(isset($_GET['id'])){
         $id= $_GET['id'];
-        $database->delete($id);
-        header("Location: http://localhost/php_exe/php_ex_12/index.php");
+        $id = mysqli_real_escape_string($database->getConnect(),$id); 
+        if($id){
+            $database->delete($id);
+            header("Location: http://localhost/php_exe/php_ex_12/index.php");
+        }
     }else{
-        header("Location: http://localhost/php_exe/php_ex_12/index.php");
+        echo "Unsuccessful. Please go back to <a href='http://localhost/php_exe/php_ex_12/index.php'>Home page</a>";
     }
 ?>
 </body>

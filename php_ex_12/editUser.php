@@ -34,12 +34,15 @@
 
     $message = '';
     if(isset($_POST['ordering'])){
-        $name = $_POST['name'];
-        $status =  $_POST['status'];
-        $ordering =  $_POST['ordering'];
+        $name = mysqli_real_escape_string($database->getConnect(),$_POST['name']);
+        $status =  mysqli_real_escape_string($database->getConnect(),$_POST['status']);
+        $ordering =  mysqli_real_escape_string($database->getConnect(),$_POST['ordering']);
 
         $updateData = $_POST;
-        $database->update($updateData,$id);
+        if($name){
+            $database->update($updateData,$id);
+            header("Location: http://localhost/php_exe/php_ex_12/index.php");
+        }
         
         header("Location: http://localhost/php_exe/php_ex_12/index.php");
     }
