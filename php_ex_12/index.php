@@ -34,7 +34,7 @@
 
         <form action="#" method="get">
             <input name="search" value = "">
-            <button>Clear</button>
+            <button onclick="returnFunc()">Clear</button>
             <input type="submit" value="search"></button>
         </form>
      
@@ -161,6 +161,10 @@
             for(let i=0; i< checkboxes.length; i++){
                 checkboxes[i].checked = self.checked;
             }
+        }
+
+        function returnFunc(){
+            window.location.href="http://localhost/php_exe/php_ex_12/index.php/";
         }
 
     </script>
