@@ -6,11 +6,11 @@ require_once "status_helper.php";
 function urlQuery($query){
     if (isset($_SERVER['QUERY_STRING'])){
         if ($_SERVER['QUERY_STRING'] == "$query-list=asc"){
-            echo "href='http://localhost/php_exe/php_ex_12/index.php/?$query-list=desc'";
+            echo "href='http://localhost/php_exe/php_ex_12/index.php?$query-list=desc'";
         } elseif($_SERVER['QUERY_STRING'] == "$query-list=desc") {
-            echo "href='http://localhost/php_exe/php_ex_12/index.php/?$query-list=asc'";
+            echo "href='http://localhost/php_exe/php_ex_12/index.php?$query-list=asc'";
         } elseif(strpos($_SERVER['QUERY_STRING'], "$query-list") == false) {
-            echo "href='http://localhost/php_exe/php_ex_12/index.php/?$query-list=asc'";
+            echo "href='http://localhost/php_exe/php_ex_12/index.php?$query-list=asc'";
         }
     }
 }
@@ -52,8 +52,8 @@ function userHTML($value){
     $html .= statusSwitch($value, "td");
     $html .= "<td>$value[ordering]</td>";
     $html .= '<td>';
-    $html .= "<a href=\"http://localhost/php_exe/php_ex_12/editUser.php/?id=$value[id]\">Edit</a> &nbsp;";
-    $html .= "<a href=\"http://localhost/php_exe/php_ex_12/deleteUser.php/?id=$value[id]\">Delete</a>";
+    $html .= "<a href=\"http://localhost/php_exe/php_ex_12/editUser.php?id=$value[id]\">Edit</a> &nbsp;";
+    $html .= "<a href=\"http://localhost/php_exe/php_ex_12/deleteUser.php?id=$value[id]\">Delete</a>";
     $html .= '</td>';
     $html .= "</tr>";
     return $html;

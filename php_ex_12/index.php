@@ -145,14 +145,11 @@
 
         function haveNotCheck(self){
             const checkboxes = document.getElementsByName('check[]');
-                for(let i=0; i< checkboxes.length; i++){
-                    if(checkboxes[i].checked){
-                        
-                    }else{
-                        alert('Please check the boxes')
-                        self.preventDefault()
-                    }
-                }
+            const checked = e => e.checked == true
+            if(!checkboxes.some(checked)){
+                alert('Please check the checkboxes')
+                self.preventDefault()
+            }
         }
         // check all checkboxes and take all values
 

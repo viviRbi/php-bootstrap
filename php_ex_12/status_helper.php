@@ -27,7 +27,7 @@ function statusFilterDisplay(){
          foreach($statusArr as $value){
              $statusName = strtolower(statusCheck($value['status']));
              $count=  $database->countResult("`status` = $value[status]");
-             echo "<a href=\"http://localhost/php_exe/php_ex_12/index.php/?status=$statusName\">".ucwords($statusName)."($count)</a>&nbsp;&nbsp";
+             echo "<a href=\"http://localhost/php_exe/php_ex_12/index.php?status=$statusName\">".ucwords($statusName)."($count)</a>&nbsp;&nbsp";
          }
 }
 ?>
