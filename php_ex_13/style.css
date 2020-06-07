@@ -1,0 +1,25 @@
+:root{
+    --ver-nav-width: 50px;
+}
+
+.ver-nav{
+    background: rgb(31, 31, 43);
+    width: var(--ver-nav-width);
+    height: 100vh;
+    position: relative;
+}
+.nav-footer{
+    position: absolute;
+    bottom: 0;
+}
+.hor-nav{
+    margin-left: var(--ver-nav-width);
+    padding: 0!important;
+    width: 100%;
+}
+.navbarname{
+    border-right: 2px solid rgb(180, 179, 179);
+    padding: 0 20px 0 10px;
+    line-height: 100%;
+}
+

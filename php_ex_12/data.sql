@@ -1,9 +1,4 @@
 -- Databasa name: php_ex_12
-
-CREATE DATABASE IF NOT EXISTS `php_ex_12`;
-
-USE `php_ex_12`;
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 
 CREATE TABLE IF NOT EXISTS `users`(
