@@ -1,7 +1,11 @@
 :root{
     --ver-nav-width: 50px;
 }
+.bg-gray{
+    background-color: rgb(215, 218, 221);
+}
 
+/* Navbar */
 .ver-nav{
     background: rgb(31, 31, 43);
     width: var(--ver-nav-width);
@@ -21,5 +25,32 @@
     border-right: 2px solid rgb(180, 179, 179);
     padding: 0 20px 0 10px;
     line-height: 100%;
+}
+/* Select option search navbar */
+::-webkit-input-placeholder {
+    font-style: italic;
+    font-size: 15px;
+ }
+ :-moz-placeholder {
+    font-style: italic;  
+    font-size: 15px;
+ }
+ ::-moz-placeholder {
+    font-style: italic;  
+    font-size: 15px;
+ }
+ :-ms-input-placeholder {  
+    font-style: italic; 
+    font-size: 15px;
+ }
+ 
+/* Content */
+.wrapper{
+    margin: 10px 100px;
+    display: block;
+}
+.wrapper-two{
+    max-width: 92vw!important;
+    margin-right: 45px!important;
 }
 
