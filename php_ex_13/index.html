@@ -15,7 +15,7 @@
 <body class="bg-gray">
     <div class="container-fluid">
         <div class="row">
-            <div class="ver-nav fixed-top">
+            <div class="ver-nav fixed-top d-sm-none d-none d-md-block">
                 <ul class="nav flex-column">
                     <div class="nav-header">
                         <li class="nav-item">
@@ -97,14 +97,14 @@
                 </ul>
 
                 <div class="dropdown show">
-                    <li class="nav-link dropdown dropdown-toggle ml-auto" href="#" id="username" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <li class="nav-link dropdown dropdown-toggle ml-auto" href="#" id="Add task" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-none d-md-inline">
                             <a class="text-secondary" href="#">thaovyletruong</a>
                         </span>
                         <span class="fas fa-camera"></span>
                     </li>
                     
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="username">
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="Add task">
                         <a class="dropdown-item" href="#">Account</a>
                         <a class="dropdown-item" href="#">Log out</a>
                         <a class="dropdown-item" href="#">Manage</a>
@@ -112,7 +112,7 @@
                 </div>
               </nav>
 
-            <div class="wrapper">
+            <div class="wrapper hor-nav">
                 <div class="row">
                     <form class="form-row align-items-center ml-4">
                         <div class="form-group row">
@@ -153,60 +153,120 @@
             </div>
 
             <!-- Tuan 1, 2, 3 -->
-            <div class="container wrapper-two">
-                <div class="row">
-                <div class="accordion col-md-9" id="accordionExample">
-                    <div class="card">
-                      <div class="card-header" id="headingOne">
-                        <h2 class="mb-0">
-                          <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                            <i class="fas fa fa-sort-down"></i>
-                            Week 1
-                          </button>
-                        </h2>
-                      </div>
-                  
-                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" >
-                        <div class="card-body">
-                          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            <div class="hor-nav">
+                <div class="container">
+                <div class="row bg-white">
+                    <div class="accordion col-md-10" id="accordionExample">
+                        <div id="headingOne">
+                            <h2 class="mb-0 row ml-1">
+                                <button class="btn btn-light col-md-11 text-left text-muted bg-white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    <i class="fas fa fa-sort-down"></i>
+                                    Week 1
+                                </button>
+                                <span class="badge col-md-1 text-left text-muted">...</span>
+                            </h2>
                         </div>
-                      </div>
-                    </div>
-                    <div class="card">
-                      <div class="card-header" id="headingTwo">
-                        <h2 class="mb-0">
-                          <button class="btn btn-light collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            <i class="fas fa fa-sort-down"></i>
-                            Week 2
-                          </button>
-                        </h2>
-                      </div>
-                      <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" >
-                        <div class="card-body">
-                          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    
+                        <div id="collapseOne" class="collapse show text-muted" aria-labelledby="headingOne" >
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">Using Freedcamp</span></li>
+                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">Skype support</span></li>
+                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">GIT</span></li>
+                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">Exercise 01</span></li>
+                                </ul>
+                                <div class="input-group mb-3 border border-success">
+                                    <input type="text" class="form-control border-0" placeholder="Add task" aria-label="Add task" aria-describedby="basic-addon1">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-white border-bottom-0 border-left-0 border-top-0 border-success" id="basic-addon1"><i class="fa fa-check text-success"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                       
                         </div>
-                      </div>
-                    </div>
-                    <div class="card">
-                      <div class="card-header" id="headingThree">
-                        <h2 class="mb-0">
-                          <button class="btn btn-light collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            <i class="fas fa fa-sort-down"></i>
-                            Week 3
-                          </button>
-                        </h2>
-                      </div>
-                      <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" >
-                        <div class="card-body">
-                          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                       
+                        <div  id="headingTwo">
+                            <h2 class="mb-0 row ml-1">
+                                <button class="btn btn-light col-md-11 text-left text-muted bg-white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    <i class="fas fa fa-sort-down"></i>
+                                    Week 2
+                                </button>
+                                <span class="badge col-md-1 text-left text-muted">...</span>
+                            </h2>
                         </div>
-                      </div>
-                    </div>
-                  </div>
+                        <div id="collapseTwo" class="collapse show text-muted" aria-labelledby="headingTwo" >
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">HTML CSS</span></li>
+                                        <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">Hosting</span></li>
+                                </ul>
+                                <div class="input-group mb-3 border border-success">
+                                    <input type="text" class="form-control border-0" placeholder="Add task" aria-label="Add task" aria-describedby="basic-addon1">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-white border-bottom-0 border-left-0 border-top-0 border-success" id="basic-addon1"><i class="fa fa-check text-success"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                       
+                        </div>
+                        
+                        <div class="" id="headingThree">
+                            <h2 class="mb-0 row ml-1">
+                                <button class="btn btn-light col-md-11 text-left text-muted bg-white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    <i class="fas fa fa-sort-down"></i>
+                                    Week 3
+                                </button>
+                                <span class="badge col-md-1 text-left text-muted">...</span>
+                            </h2>
+                        </div>
+                        <div id="collapseThree" class="collapse show text-muted" aria-labelledby="headingThree" >
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">PHP with ASNT</span></li>
+                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">PHP File and Upload File</span></li>
+                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">Javascript</span></li>
+                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">Javascript Advance</span></li>
+                                </ul>
+                                <div class="input-group mb-3 border border-success">
+                                    <input type="text" class="form-control border-0" placeholder="Add task" aria-label="Add task" aria-describedby="basic-addon1">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-white border-bottom-0 border-left-0 border-top-0 border-success" id="basic-addon1"><i class="fa fa-check text-success"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                  <div class="col-md-3 bg-light">
+                        <div id="headingFour">
+                            <h2 class="mb-0 row ml-1">
+                                <button class="btn btn-light col-md-11 text-left text-muted bg-white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    <i class="fas fa fa-sort-down"></i>
+                                    Week 3
+                                </button>
+                                <span class="badge col-md-1 text-left text-muted">...</span>
+                            </h2>
+                        </div>
+                        <div id="collapseFour" class="collapse show text-muted" aria-labelledby="headingThree" >
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">PHP with ASNT</span></li>
+                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">PHP File and Upload File</span></li>
+                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">Javascript</span></li>
+                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">Javascript Advance</span></li>
+                                </ul>
+                                <div class="input-group mb-3 border border-success">
+                                    <input type="text" class="form-control border-0" placeholder="Add task" aria-label="Add task" aria-describedby="basic-addon1">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-white border-bottom-0 border-left-0 border-top-0 border-success" id="basic-addon1"><i class="fa fa-check text-success"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
 
-                  </div>
+                    <div class="col-md-2">
+
+                    </div>
                 </div>
             </div>
         </div>

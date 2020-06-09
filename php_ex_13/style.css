@@ -4,7 +4,6 @@
 .bg-gray{
     background-color: rgb(215, 218, 221);
 }
-
 /* Navbar */
 .ver-nav{
     background: rgb(31, 31, 43);
@@ -49,8 +48,8 @@
     margin: 10px 100px;
     display: block;
 }
-.wrapper-two{
+/* .wrapper-two{
     max-width: 92vw!important;
-    margin-right: 45px!important;
-}
+    margin-right: 2vw!important;
+} */
 
