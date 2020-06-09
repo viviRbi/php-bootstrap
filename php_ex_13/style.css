@@ -47,6 +47,10 @@
 .wrapper{
     margin: 10px 100px;
     display: block;
+    width: 100%;
+}
+.body-wrapper{
+    margin-right:var(--ver-nav-width);
 }
 .btn-dot{
     cursor: pointer;
