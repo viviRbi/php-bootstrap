@@ -2,7 +2,7 @@
     --ver-nav-width: 50px;
 }
 .bg-gray{
-    background-color: rgb(215, 218, 221);
+    background-color: rgb(225, 230, 235);
 }
 /* Navbar */
 .ver-nav{
@@ -48,8 +48,13 @@
     margin: 10px 100px;
     display: block;
 }
-/* .wrapper-two{
-    max-width: 92vw!important;
-    margin-right: 2vw!important;
-} */
+.btn-dot{
+    cursor: pointer;
+}
+.dropdown-item{
+    cursor:pointer!important;
+}
+.dropdown-item:hover{
+    background-color: rgb(212, 230, 230)!important;
+}
 
