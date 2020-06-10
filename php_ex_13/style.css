@@ -4,6 +4,9 @@
 .bg-gray{
     background-color: rgb(225, 230, 235);
 }
+.btn:focus{
+    box-shadow: none!important;
+}
 /* Navbar */
 .ver-nav{
     background: rgb(31, 31, 43);
@@ -50,7 +53,7 @@
     width: 100%;
 }
 .body-wrapper{
-    margin-right:var(--ver-nav-width);
+    margin-right: var(--ver-nav-width);
 }
 .btn-dot{
     cursor: pointer;
@@ -60,5 +63,18 @@
 }
 .dropdown-item:hover{
     background-color: rgb(212, 230, 230)!important;
+}
+
+/* small */
+@media screen and (max-width: 768px){
+    .wrapper{
+        margin: 10px 0!important;
+    }
+    .hor-nav{
+        margin-left: 0;
+    }
+    .body-wrapper{
+        margin-right: 0;
+    }
 }
 
