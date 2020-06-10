@@ -184,10 +184,10 @@
                         <div id="collapseOne" class="collapse show text-muted" aria-labelledby="headingOne" >
                             <div class="card-body">
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">Using Freedcamp</span></li>
-                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">Skype support</span></li>
-                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">GIT</span></li>
-                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">Exercise 01</span></li>
+                                    <li class="list-group-item dropable"><i class="fa fa-check-circle"></i> <span class="ml-2">Using Freedcamp</span></li>
+                                    <li class="list-group-item dropable"><i class="fa fa-check-circle"></i> <span class="ml-2">Skype support</span></li>
+                                    <li class="list-group-item dropable"><i class="fa fa-check-circle"></i> <span class="ml-2">GIT</span></li>
+                                    <li class="list-group-item dropable"><i class="fa fa-check-circle"></i> <span class="ml-2">Exercise 01</span></li>
                                 </ul>
                                 <div class="input-group mb-3 border border-success">
                                     <input type="text" class="form-control border-0" placeholder="Add task" aria-label="Add task" aria-describedby="basic-addon1">
@@ -296,10 +296,10 @@
                         <div id="collapseFour" class="collapse show text-muted" aria-labelledby="headingThree" >
                             <div class="card-body">
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">PHP with ASNT</span></li>
-                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">PHP File and Upload File</span></li>
-                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">Javascript</span></li>
-                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">Javascript Advance</span></li>
+                                    <li class="list-group-item dropable"><i class="fa fa-check-circle"></i> <span class="ml-2">PHP with ASNT</span></li>
+                                    <li class="list-group-item dropable"><i class="fa fa-check-circle"></i> <span class="ml-2">PHP File and Upload File</span></li>
+                                    <li class="list-group-item dropable"><i class="fa fa-check-circle"></i> <span class="ml-2">Javascript</span></li>
+                                    <li class="list-group-item dropable"><i class="fa fa-check-circle"></i> <span class="ml-2">Javascript Advance</span></li>
                                 </ul>
                                 <div class="input-group mb-3 border border-success">
                                     <input type="text" class="form-control border-0" placeholder="Add task" aria-label="Add task" aria-describedby="basic-addon1">
@@ -312,11 +312,32 @@
                     </div>
 
                     <div class="col-lg-4 col-xl-3 d-sm-none d-xs-none d-lg-block d-xl-block">
-                        <h1>sdadasdasdasdas dasdadasdas</h1>
+                         <ul class="list-group list-group-flush">
+                            <li class="list-group-item"> 
+                                <span class="side-header">Assign to</span>
+                                <span class="font-italic text-muted">drag to assign</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="badge tag dragable" draggable="true">Everyone</span>
+                                <span class="badge tag dragable" draggable="true">Lan L</span>
+                                <span class="badge tag dragable" draggable="true">thaovyletruong@gmail.com</span>
+                            </li>
+                            <li class="list-group-item"> 
+                                <span class="side-header">Priority</span>
+                                <span class="font-italic text-muted">drag tag</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="badge badge-info dragable-priority" draggable="true">Low</span>
+                                <span class="badge badge-warning dragable-priority" draggable="true">Medium</span>
+                                <span class="badge badge-danger dragable-priority" draggable="true">High</span>
+                            </li>
+                            <li class="list-group-item"> <span class="ml-2">Javascript Advance</span></li>
+                        </ul>
                     </div>
-                    </div>
+                </div>
                 </div>
             </div>
         </div>
+        <script src="script.js"></script>
     </body>
 </html>
