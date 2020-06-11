@@ -67,7 +67,15 @@
 .dropdown-item:hover{
     background-color: rgb(212, 230, 230)!important;
 }
-
+.float-right{
+    float: right;
+}
+.float-right::before{
+    clear: both;
+}
+.float-right::after{
+    clear: both;
+}
 /* Side menu */
 .side-header{
     font-weight: 540;
@@ -85,6 +93,15 @@
 }
 .dragable{
     cursor: pointer;
+}
+.side-fixed{
+    position: fixed;
+    right: var(--ver-nav-width);
+    width: 23%;
+}
+.modal-body{
+    max-height: 70vh !important;
+    overflow-y: auto !important;
 }
 /* small */
 @media screen and (max-width: 768px){

@@ -173,7 +173,7 @@
                                     </a>
                                     <!-- dropdown list -->
                                     <ul class="dropdown-menu" aria-labelledby="dropdownDot">
-                                        <li class="dropdown-item"><i class="fa fa-plus"></i> <span class="ml-2">Add Task</span></li>
+                                        <li class="dropdown-item" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i> <span class="ml-2" >Add Task</span></li>
                                         <li class="dropdown-item"><i class="fa fa-pencil"></i> <span class="ml-2">Edit List</span></li>
                                         <li class="dropdown-item"><i class="fa fa-copy"></i> <span class="ml-2">Copy/Move List</span></li>
                                     </ul>
@@ -184,10 +184,10 @@
                         <div id="collapseOne" class="collapse show text-muted" aria-labelledby="headingOne" >
                             <div class="card-body">
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item dropable"><i class="fa fa-check-circle"></i> <span class="ml-2">Using Freedcamp</span></li>
-                                    <li class="list-group-item dropable"><i class="fa fa-check-circle"></i> <span class="ml-2">Skype support</span></li>
-                                    <li class="list-group-item dropable"><i class="fa fa-check-circle"></i> <span class="ml-2">GIT</span></li>
-                                    <li class="list-group-item dropable"><i class="fa fa-check-circle"></i> <span class="ml-2">Exercise 01</span></li>
+                                    <li class="list-group-item dropable"><i class="fa fa-check-circle"></i> <span class="ml-2">Using Freedcamp</span><span class="float-right"><i class="fab fa-stack-exchange"> 0</i></span></li>
+                                    <li class="list-group-item dropable"><i class="fa fa-check-circle"></i> <span class="ml-2">Skype support</span><span class="float-right"><i class="fab fa-stack-exchange"> 0</i></span></li>
+                                    <li class="list-group-item dropable"><i class="fa fa-check-circle"></i> <span class="ml-2">GIT</span><span class="float-right"><i class="fab fa-stack-exchange"> 1</i></span></li>
+                                    <li class="list-group-item dropable"><i class="fa fa-check-circle"></i> <span class="ml-2">Exercise 01</span><span class="float-right"><i class="fab fa-stack-exchange"> 0</i></span></li>
                                 </ul>
                                 <div class="input-group mb-3 border border-success">
                                     <input type="text" class="form-control border-0" placeholder="Add task" aria-label="Add task" aria-describedby="basic-addon1">
@@ -222,8 +222,8 @@
                         <div id="collapseTwo" class="collapse show text-muted" aria-labelledby="headingTwo" >
                             <div class="card-body">
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">HTML CSS</span></li>
-                                        <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">Hosting</span></li>
+                                    <li class="list-group-item dropable"><i class="fa fa-check-circle"></i> <span class="ml-2">HTML CSS</span></li>
+                                        <li class="list-group-item dropable"><i class="fa fa-check-circle"></i> <span class="ml-2">Hosting</span></li>
                                 </ul>
                                 <div class="input-group mb-3 border border-success">
                                     <input type="text" class="form-control border-0" placeholder="Add task" aria-label="Add task" aria-describedby="basic-addon1">
@@ -258,10 +258,10 @@
                         <div id="collapseThree" class="collapse show text-muted" aria-labelledby="headingThree" >
                             <div class="card-body">
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">PHP with ASNT</span></li>
-                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">PHP File and Upload File</span></li>
-                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">Javascript</span></li>
-                                    <li class="list-group-item"><i class="fa fa-check-circle"></i> <span class="ml-2">Javascript Advance</span></li>
+                                    <li class="list-group-item dropable"><i class="fa fa-check-circle"></i> <span class="ml-2">PHP with ASNT</span></li>
+                                    <li class="list-group-item dropable"><i class="fa fa-check-circle"></i> <span class="ml-2">PHP File and Upload File</span></li>
+                                    <li class="list-group-item dropable"><i class="fa fa-check-circle"></i> <span class="ml-2">Javascript</span></li>
+                                    <li class="list-group-item dropable"><i class="fa fa-check-circle"></i> <span class="ml-2">Javascript Advance</span></li>
                                 </ul>
                                 <div class="input-group mb-3 border border-success">
                                     <input type="text" class="form-control border-0" placeholder="Add task" aria-label="Add task" aria-describedby="basic-addon1">
@@ -311,13 +311,74 @@
                         </div>
                     </div>
 
+                    <!-- Modal -->
+                    <div class="modal fade" id="add" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content container">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Add Task</h5>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group row">
+                                      <label for="tasklist" class="col-sm-2 col-form-label">Task List</label>
+                                      <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="tasklist">
+                                      </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <label for="title" class="col-sm-2 col-form-label">Title</label>
+                                      <div class="col-sm-10">
+                                        <input type="password" class="form-control" id="title">
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description" class="col-sm-2 col-form-label">Discription</label>
+                                        <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10"></textarea>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="tasklist" class="col-sm-2 col-form-label">Task List</label>
+                                        <div class="col-sm-10">
+                                          <input type="email" class="form-control" id="tasklist">
+                                        </div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <div class="col-6">
+                                            <label for="colFormLabelSm" class="col-form-label col-form-label-sm mt-1">Sort</label>
+                                            <select class="form-control form-control-sm col-sm-10 ml-2 custom-select">
+                                                <option aria-selected="true" class="text-center">Assign to</option>
+                                                <option class="text-center">Everyone</option>
+                                                <option class="text-center">Lan L</option>
+                                                <option class="text-center">thaovyletruong@gmail.com</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="colFormLabelSm" class="col-form-label col-form-label-sm mt-1">Sort</label>
+                                            <select class="form-control form-control-sm col-sm-10 ml-2 custom-select">
+                                                <option aria-selected="true" class="text-center">Priority</option>
+                                                <option class="text-center">Low</option>
+                                                <option class="text-center">Medium</option>
+                                                <option class="text-center">High</option>
+                                            </select>
+                                        </div>
+                                      </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Understood</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
                     <div class="col-lg-4 col-xl-3 d-sm-none d-xs-none d-lg-block d-xl-block">
-                         <ul class="list-group list-group-flush">
+                         <ul class="list-group list-group-flush side-fixed">
                             <li class="list-group-item"> 
                                 <span class="side-header">Assign to</span>
                                 <span class="font-italic text-muted">drag to assign</span>
                             </li>
-                            <li class="list-group-item">
+                            <li class="list-group-item" id="assign">
                                 <span class="badge tag dragable" draggable="true">Everyone</span>
                                 <span class="badge tag dragable" draggable="true">Lan L</span>
                                 <span class="badge tag dragable" draggable="true">thaovyletruong@gmail.com</span>
@@ -326,12 +387,16 @@
                                 <span class="side-header">Priority</span>
                                 <span class="font-italic text-muted">drag tag</span>
                             </li>
-                            <li class="list-group-item">
+                            <li class="list-group-item" id="priority">
                                 <span class="badge badge-info dragable-priority" draggable="true">Low</span>
                                 <span class="badge badge-warning dragable-priority" draggable="true">Medium</span>
                                 <span class="badge badge-danger dragable-priority" draggable="true">High</span>
                             </li>
-                            <li class="list-group-item"> <span class="ml-2">Javascript Advance</span></li>
+                            <li class="list-group-item"> <span class="side-header">Progress</span></li>
+                            <li class="list-group-item" id="progress">
+                                <span class="badge tag dragable-progress" draggable="true">In progress</span>
+                                <span class="badge tag dragable-progress" draggable="true">Complete</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
